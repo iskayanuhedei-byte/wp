@@ -1,0 +1,40 @@
+name: wtsr-dev
+services:
+  db:
+    image: mariadb:11.4@sha256:1292844148b311e4ed4300022a996d39083f415a963e970cf47cad1b3b18e3a6
+    container_name: wtsr-db
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "1"
+      MARIADB_DATABASE: wordpress
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 2s
+      timeout: 5s
+      retries: 40
+  wordpress:
+    image: wordpress:6.8.3-php8.3-apache@sha256:30bff39330d1693b0ce13d32fc9b7bb67193064f040b7d60d3494e136fa599d4
+    container_name: wtsr-wp
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8088:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ""
+      WORDPRESS_DEBUG: "1"
+      WORDPRESS_CONFIG_EXTRA: "if (is_file('/opt/wtsr-dev/runtime-network.php')) { require_once '/opt/wtsr-dev/runtime-network.php'; }"
+    # Public-address DNS fixtures for pre_http_request mocks, never real downloads.
+    extra_hosts:
+      - "example.com:93.184.216.34"
+      - "example.org:93.184.216.34"
+    volumes:
+      - wordpress-data:/var/www/html
+      - /etc/ssl/certs/ca-certificates.crt:/run/wtsr-ca-bundle.pem:ro
+volumes:
+  db-data:
+  wordpress-data:

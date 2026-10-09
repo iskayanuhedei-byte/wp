@@ -1,0 +1,126 @@
+.wtsr-wrap {
+    max-width: 1200px;
+}
+
+.wtsr-panel {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    padding: 16px 20px;
+    margin-top: 18px;
+}
+
+.wtsr-panel h2 {
+    margin-top: 0;
+}
+
+.wtsr-mode {
+    display: block;
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+.wtsr-danger {
+    border-left: 4px solid #b32d2e;
+    padding: 4px 12px 14px;
+    background: #fcf0f1;
+    margin-top: 16px;
+}
+
+.wtsr-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.wtsr-counters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 14px 0 20px;
+}
+
+.wtsr-counters > div {
+    min-width: 110px;
+    background: #f6f7f7;
+    border: 1px solid #dcdcde;
+    padding: 10px 12px;
+}
+
+.wtsr-counters dt {
+    color: #50575e;
+    font-size: 12px;
+}
+
+.wtsr-counters dd {
+    margin: 6px 0 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.wtsr-table-container {
+    overflow-x: auto;
+}
+
+.wtsr-results {
+    min-width: 650px;
+}
+
+.wtsr-results th:first-child {
+    width: 26%;
+}
+
+.wtsr-results th:nth-child(2) {
+    width: 18%;
+}
+
+.wtsr-results td {
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+.wtsr-results td p {
+    margin-top: 0;
+}
+
+.wtsr-post-id {
+    display: block;
+    margin-top: 5px;
+    color: #646970;
+    font-size: 12px;
+}
+
+.wtsr-state-label {
+    font-weight: 600;
+}
+
+.wtsr-state-fixed .wtsr-state-label {
+    color: #006b32;
+}
+
+.wtsr-state-deleted .wtsr-state-label,
+.wtsr-state-missing .wtsr-state-label {
+    color: #a02222;
+}
+
+.wtsr-state-retry .wtsr-state-label {
+    color: #775500;
+}
+
+.wtsr-evidence {
+    margin: 0 0 0 16px;
+    list-style: disc;
+    color: #50575e;
+    font-size: 12px;
+}
+
+#wtsr-trusted-hosts {
+    display: block;
+    margin: 8px 0 12px;
+    max-width: 720px;
+}
+
+.wtsr-wrap [hidden] {
+    display: none !important;
+}
